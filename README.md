@@ -1,11 +1,9 @@
 # ag.vim #
 
-This plugin is a front for the Perl module
-[App::Ag](http://search.cpan.org/~petdance/ag/ag).  Ag can be used as a
+This is an adaptation of Ack.vim to use Ag instead. Ag can be used as a
 replacement for 99% of the uses of _grep_.  This plugin will allow you to run
 ag from vim, and shows the results in a split window.
 
-The *Official Version* of this plugin is available at [vim.org](http://www.vim.org/scripts/script.php?script_id=2572).
 
 ## Installation ##
 
