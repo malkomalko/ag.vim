@@ -10,7 +10,7 @@
 
 " Location of the ag utility
 if !exists("g:agprg")
-	let g:agprg="ag"
+	let g:agprg="ag --nogroup --column"
 endif
 
 function! s:Ag(cmd, args)
