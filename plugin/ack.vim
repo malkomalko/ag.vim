@@ -1,19 +1,19 @@
-" NOTE: You must, of course, install the ack script
+" NOTE: You must, of course, install the ag script
 "       in your path.
 " On Debian / Ubuntu:
-"   sudo apt-get install ack-grep
+"   sudo apt-get install ag-grep
 " On your vimrc:
-"   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+"   let g:agprg="ag-grep -H --nocolor --nogroup --column"
 "
 " With MacPorts:
-"   sudo port install p5-app-ack
+"   sudo port install p5-app-ag
 
-" Location of the ack utility
-if !exists("g:ackprg")
-	let g:ackprg="ack -H --nocolor --nogroup --column"
+" Location of the ag utility
+if !exists("g:agprg")
+	let g:agprg="ag"
 endif
 
-function! s:Ack(cmd, args)
+function! s:Ag(cmd, args)
     redraw
     echo "Searching ..."
 
@@ -26,16 +26,16 @@ function! s:Ack(cmd, args)
 
     " Format, used to manage column jump
     if a:cmd =~# '-g$'
-        let g:ackformat="%f"
+        let g:agformat="%f"
     else
-        let g:ackformat="%f:%l:%c:%m"
+        let g:agformat="%f:%l:%c:%m"
     end
 
     let grepprg_bak=&grepprg
     let grepformat_bak=&grepformat
     try
-        let &grepprg=g:ackprg
-        let &grepformat=g:ackformat
+        let &grepprg=g:agprg
+        let &grepformat=g:agformat
         silent execute a:cmd . " " . l:grepargs
     finally
         let &grepprg=grepprg_bak
@@ -57,7 +57,7 @@ function! s:Ack(cmd, args)
     exec "nnoremap <silent> <buffer> gv <C-W><C-W><C-W>v<C-L><C-W><C-J><CR><C-W><C-J>"
 
     " If highlighting is on, highlight the search keyword.
-    if exists("g:ackhighlight")
+    if exists("g:aghighlight")
         let @/=a:args
         set hlsearch
     end
@@ -65,16 +65,16 @@ function! s:Ack(cmd, args)
     redraw!
 endfunction
 
-function! s:AckFromSearch(cmd, args)
+function! s:AgFromSearch(cmd, args)
     let search =  getreg('/')
     " translate vim regular expression to perl regular expression.
     let search = substitute(search,'\(\\<\|\\>\)','\\b','g')
-    call s:Ack(a:cmd, '"' .  search .'" '. a:args)
+    call s:Ag(a:cmd, '"' .  search .'" '. a:args)
 endfunction
 
-command! -bang -nargs=* -complete=file Ack call s:Ack('grep<bang>',<q-args>)
-command! -bang -nargs=* -complete=file AckAdd call s:Ack('grepadd<bang>', <q-args>)
-command! -bang -nargs=* -complete=file AckFromSearch call s:AckFromSearch('grep<bang>', <q-args>)
-command! -bang -nargs=* -complete=file LAck call s:Ack('lgrep<bang>', <q-args>)
-command! -bang -nargs=* -complete=file LAckAdd call s:Ack('lgrepadd<bang>', <q-args>)
-command! -bang -nargs=* -complete=file AckFile call s:Ack('grep<bang> -g', <q-args>)
+command! -bang -nargs=* -complete=file Ag call s:Ag('grep<bang>',<q-args>)
+command! -bang -nargs=* -complete=file AgAdd call s:Ag('grepadd<bang>', <q-args>)
+command! -bang -nargs=* -complete=file AgFromSearch call s:AgFromSearch('grep<bang>', <q-args>)
+command! -bang -nargs=* -complete=file LAg call s:Ag('lgrep<bang>', <q-args>)
+command! -bang -nargs=* -complete=file LAgAdd call s:Ag('lgrepadd<bang>', <q-args>)
+command! -bang -nargs=* -complete=file AgFile call s:Ag('grep<bang> -g', <q-args>)
