@@ -1,7 +1,7 @@
 # Added by Josh Nichols, a.k.a. technicalpickles
 require 'rake'
 
-files = ['doc/ack.txt', 'plugin/ack.vim']
+files = ['doc/ag.txt', 'plugin/ag.vim']
 
 desc 'Install plugin and documentation'
 task :install do
