@@ -1,43 +1,43 @@
-*ack.txt*   Plugin that integrates ack with Vim
+*ag.txt*   Plugin that integrates ag with Vim
 
 ==============================================================================
-Author:  Antoine Imbert <antoine.imbert+ackvim@gmail.com>         *ack-author*
+Author:  Will Stamper <epmatsw@gmail.com>                          *ag-author*
 License: Same terms as Vim itself (see |license|)
 
 ==============================================================================
-INTRODUCTION                                                             *ack*
+INTRODUCTION                                                             *ag*
 
-This plugin is a front for the Perl module App::Ack.  Ack can be used as a
-replacement for grep.  This plugin will allow you to run ack from vim, and
+This plugin is a front for the cli executable Ag.  Ag can be used as a
+replacement for grep.  This plugin will allow you to run ag from vim, and
 shows the results in a split window.
 
-:Ack[!] [options] {pattern} [{directory}]                               *:Ack*
+:Ag[!] [options] {pattern} [{directory}]                               *:Ag*
 
     Search recursively in {directory} (which defaults to the current
     directory) for the {pattern}.  Behaves just like the |:grep| command, but
     will open the |Quickfix| window for you. If [!] is not given the first
     error is jumped to.
 
-:AckAdd [options] {pattern} [{directory}]                            *:AckAdd*
+:AgAdd [options] {pattern} [{directory}]                            *:AgAdd*
 
-    Just like |:Ack|, but instead of making a new list, the matches are
+    Just like |:Ag|, but instead of making a new list, the matches are
     appended to the current |quickfix| list.
 
-:AckFromSearch [{directory}]                                  *:AckFromSearch*
+:AgFromSearch [{directory}]                                  *:AgFromSearch*
 
-    Just like |:Ack| but the pattern is from previous search.
+    Just like |:Ag| but the pattern is from previous search.
 
-:LAck [options] {pattern} [{directory}]                                *:LAck*
+:LAg [options] {pattern} [{directory}]                                *:LAg*
 
-    Just like |:Ack| but instead of the |quickfix| list, matches are placed in
+    Just like |:Ag| but instead of the |quickfix| list, matches are placed in
     the current |location-list|.
 
-:LAckAdd [options] {pattern} [{directory}]                          *:LAckAdd*
+:LAgAdd [options] {pattern} [{directory}]                          *:LAgAdd*
 
-    Just like |:AckAdd| but instead of the |quickfix| list, matches are added
+    Just like |:AgAdd| but instead of the |quickfix| list, matches are added
     to the current |location-list|
 
-:AckFile [options] {pattern} [{directory}]                          *:AckFile*
+:AgFile [options] {pattern} [{directory}]                          *:AgFile*
 
     Search recursively in {directory} (which defaults to the current
     directory) for filenames matching the {pattern}.  Behaves just like the
@@ -51,13 +51,13 @@ line.
 See http://betterthangrep.com/ for more information.
 
 ==============================================================================
-MAPPINGS                                                        *ack-mappings*
+MAPPINGS                                                        *ag-mappings*
 
 The following keyboard shortcuts are available in the quickfix window:
 
 o                   open file (same as enter).
 
-go                  preview file (open but maintain focus on ack.vim results).
+go                  preview file (open but maintain focus on ag.vim results).
 
 t                   open in a new tab.
 
