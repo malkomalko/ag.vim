@@ -2,7 +2,7 @@
 
 This is an adaptation of Ack.vim to use Ag instead. Ag can be used as a
 replacement for 99% of the uses of _grep_.  This plugin will allow you to run
-ag from vim, and shows the results in a split window.
+ag from vim, and shows the results in a split window. This plugin is almost copy and pasted from [mileszs' ack.vim plugin](https://github.com/mileszs/ack.vim).
 
 
 ## Installation ##
