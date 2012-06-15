@@ -14,7 +14,7 @@ You have to install [ag](https://github.com/ggreer/the_silver_searcher), of cour
 
 Install with Homebrew:
 
-    brew install ag
+    brew install the_silver_searcher
 
 Otherwise, you are on your own.
 
