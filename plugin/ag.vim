@@ -10,7 +10,7 @@
 
 " Location of the ag utility
 if !exists("g:agprg")
-	let g:agprg="ag --nogroup --column"
+	let g:agprg="ag --nogroup --column --literal"
 endif
 
 function! s:Ag(cmd, args)
@@ -36,7 +36,7 @@ function! s:Ag(cmd, args)
     try
         let &grepprg=g:agprg
         let &grepformat=g:agformat
-        silent execute a:cmd . " " . l:grepargs
+	silent execute a:cmd . ' "' . l:grepargs . '"'
     finally
         let &grepprg=grepprg_bak
         let &grepformat=grepformat_bak
@@ -49,7 +49,6 @@ function! s:Ag(cmd, args)
     endif
 
     exec "nnoremap <silent> <buffer> q :ccl<CR>"
-    exec "nnoremap <silent> <buffer> <esc> :ccl<CR>"
     exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
     exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
     exec "nnoremap <silent> <buffer> o <CR>"
