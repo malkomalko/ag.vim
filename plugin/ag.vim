@@ -36,7 +36,8 @@ function! s:Ag(cmd, args)
     try
         let &grepprg=g:agprg
         let &grepformat=g:agformat
-	silent execute a:cmd . ' "' . l:grepargs . '"'
+        let l:grepargs = substitute(l:grepargs, '"', '\\\"', "g")
+        silent execute a:cmd . ' "' . l:grepargs . '"'
     finally
         let &grepprg=grepprg_bak
         let &grepformat=grepformat_bak
@@ -52,6 +53,7 @@ function! s:Ag(cmd, args)
     exec "nnoremap <silent> <buffer> t <C-W><CR><C-W>T"
     exec "nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>"
     exec "nnoremap <silent> <buffer> o <CR>"
+    exec "nnoremap <silent> <buffer> <CR> <CR>"
     exec "nnoremap <silent> <buffer> go <CR><C-W><C-W>"
     exec "nnoremap <silent> <buffer> v <C-W><C-W><C-W>v<C-L><C-W><C-J><CR>"
     exec "nnoremap <silent> <buffer> gv <C-W><C-W><C-W>v<C-L><C-W><C-J><CR><C-W><C-J>"
