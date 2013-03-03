@@ -74,7 +74,7 @@ function! s:AgFromSearch(cmd, args)
     call s:Ag(a:cmd, '"' .  search .'" '. a:args)
 endfunction
 
-command! -bang -nargs=* -complete=file Ag call s:Ag('grep<bang>',<q-args>)
+command! -bang -nargs=* -complete=file Ag call s:Ag('grep!<bang>',<q-args>)
 command! -bang -nargs=* -complete=file AgAdd call s:Ag('grepadd<bang>', <q-args>)
 command! -bang -nargs=* -complete=file AgFromSearch call s:AgFromSearch('grep<bang>', <q-args>)
 command! -bang -nargs=* -complete=file LAg call s:Ag('lgrep<bang>', <q-args>)
