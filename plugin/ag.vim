@@ -1,5 +1,5 @@
 if !exists("g:agprg")
-	let g:agprg="ag --nogroup --column --literal"
+  let g:agprg="ag --nogroup --column --literal"
 endif
 
 function! s:Ag(cmd, args, ...)
@@ -49,9 +49,9 @@ function! s:Ag(cmd, args, ...)
 endfunction
 
 function! s:AgFromSearch(cmd, args)
-    let search =  getreg('/')
-    let search = substitute(search,'\(\\<\|\\>\)','\\b','g')
-    call s:Ag(a:cmd, '"' .  search .'" '. a:args)
+  let search =  getreg('/')
+  let search = substitute(search,'\(\\<\|\\>\)','\\b','g')
+  call s:Ag(a:cmd, '"' .  search .'" '. a:args)
 endfunction
 
 command! -bang -nargs=* -complete=file Ag call s:Ag('grep!<bang>', <q-args>)
