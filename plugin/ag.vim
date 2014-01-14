@@ -4,6 +4,9 @@ endif
 
 function! s:Ag(cmd, args, ...)
   redraw
+  if exists("g:agpre")
+    silent execute g:agpre
+  endif
   echo "Searching ..."
 
   if empty(a:args)
@@ -54,10 +57,10 @@ function! s:AgFromSearch(cmd, args)
   call s:Ag(a:cmd, '"' .  search .'" '. a:args)
 endfunction
 
-command! -bang -nargs=* -complete=file Ag call s:Ag('grep!<bang>', <q-args>)
+command! -bang -nargs=* -complete=file Ag call s:Ag('grep<bang>', <q-args>)
 command! -bang -nargs=* -complete=file AgAdd call s:Ag('grepadd<bang>', <q-args>)
 command! -bang -nargs=* -complete=file AgFromSearch call s:AgFromSearch('grep<bang>', <q-args>)
 command! -bang -nargs=* -complete=file LAg call s:Ag('lgrep<bang>', <q-args>)
 command! -bang -nargs=* -complete=file LAgAdd call s:Ag('lgrepadd<bang>', <q-args>)
-command! -bang -nargs=* -complete=file AgFile call s:Ag('grep!<bang> -g', <q-args>)
-command! -bang -nargs=* -complete=file AgNotes call s:Ag('grep!<bang>', <q-args>, '~/.vim/notes')
+command! -bang -nargs=* -complete=file AgFile call s:Ag('grep<bang> -g', <q-args>)
+command! -bang -nargs=* -complete=file AgNotes call s:Ag('grep<bang>', <q-args>, '~/.vim/notes')
